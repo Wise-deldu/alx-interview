@@ -1,5 +1,5 @@
-```bash
 # Minimum Operations
++--------------------------------------------------------------------------------------------------------------+
 For this project, you will need to understand several key algorithmic and mathematical concepts to devise a solution that efficiently calculates the minimum number of operations to achieve a given number of characters using only “Copy All” and “Paste” operations. Here is a list of concepts and resources that will be helpful:
 
 ### Concepts Needed:
@@ -37,4 +37,4 @@ By studying these concepts and utilizing the resources provided, you will be equ
 * Your code should be documented
 * Your code should use the `PEP 8` style (version 1.7.x)
 * All your files must be executable
-```
++--------------------------------------------------------------------------------------------------------------+
