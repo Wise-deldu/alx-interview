@@ -3,9 +3,10 @@
 Log parsing
 """
 
+
 import sys
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     filesize, count = 0, 0
     codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
     stats = {k: 0 for k in codes}
