@@ -28,7 +28,7 @@ if __name__ == "__main__":
             except BaseException:
                 pass
             try:
-                filesize += int (data[-1])
+                filesize += int(data[-1])
             except BaseException:
                 pass
             if count % 10 == 0:
