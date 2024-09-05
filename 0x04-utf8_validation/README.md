@@ -24,6 +24,7 @@ For the “0x04. UTF-8 Validation” project, you will need to apply your knowle
 5. **Boolean Logic:**
 
     * Applying logical operations to make decisions within the program.
+
 By studying these concepts and utilizing the resources provided, you will be equipped to tackle the UTF-8 validation project, effectively applying bitwise operations and logical reasoning to determine the validity of UTF-8 encoded data.
 
 ## Additional Resource
