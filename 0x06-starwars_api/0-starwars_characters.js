@@ -1,20 +1,38 @@
 #!/usr/bin/node
-const util = require('util');
-const request = util.promisify(require('request'));
-const filmID = process.argv[2];
 
-async function starwarsCharacters (filmId) {
-  const endpoint = 'https://swapi-api.hbtn.io/api/films/' + filmId;
-  let response = await (await request(endpoint)).body;
-  response = JSON.parse(response);
-  const characters = response.characters;
+// Import the 'request' library
+const request = require('request')
 
-  for (let i = 0; i < characters.length; i++) {
-    const urlCharacter = characters[i];
-    let character = await (await request(urlCharacter)).body;
-    character = JSON.parse(character);
-    console.log(character.name);
-  }
+// Define constant with the base URL of the Star Wars API
+const API_URL = 'https://swapi-api.alx-tools.com/api';
+
+// Check if the number of command line arguments is greater than 2
+if (process.argv.length > 2) {
+  // Make a request to the film resource for the specified is greater than 2
+  request(`${API_URL}/films/${process.argv[2]}/`, (err, _, body) => {
+    // If an error occured during the request, log the error
+    if (err) {
+      console.log(err);
+    }
+    // Get the characters URL from the film's response body
+    const charactersURL = JSON.parse(body).characters;
+
+    // Create an array of Promises that resolve with the names of the characters
+    const charactersName = charactersURL.map(
+      url => new Promise((resolve, reject) => {
+        // Make a request to the character resource
+        request(url, (promiseErr, __, charactersReqBody) => {
+          // if an error occured during the request, reject the Promise with the error
+          if (promiseErr) {
+            reject(promiseErr);
+          }
+          resolve(JSON.parse(charactersReqBody).name);
+        });
+      }));
+
+    // Wait for all Promises to resolve and log the names of the characters, separated by new lines
+    Promise.all(charactersName)
+      .then(names => console.log(names.join('\n')))
+      .catch(allErr => console.log(allErr));
+  });
 }
-
-starwarsCharacters(filmID);
