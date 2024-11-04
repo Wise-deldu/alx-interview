@@ -15,7 +15,7 @@ def canUnlockAll(boxes):
     """
     if not boxes or type(boxes) is not list:
         return False
-    
+
     unlocked = [0]
     for n in unlocked:
         for key in boxes[n]:
